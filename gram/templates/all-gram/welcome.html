@@ -1,0 +1,33 @@
+{% extends 'all-gram/base.html'%}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+{{block.super}}
+
+<div class="homebody">
+    <div class="container"> 
+
+        <div class="w3-card-6" style="width:56%">
+            <div class="container">
+                {% if all_images %} {% for images in all_images %}
+                <div class="imagepadding">
+                    <div class="panel panel-primary">
+                        <p class="user-dp">
+                        <a href="{{ image.image }}" data-lightbox="gallery">
+                            <img src="{{ image.image.url}}" class="img-responsive" style="width:100%; margin-left:0%; margin-top: 15px;">
+                        </a>
+                        <div class="container">
+                            <div class='likesect'>
+                        
+                                <span class="like-row">
+                                    {% if liked %}
+                            </span>
+                            {% if all_users %} {% for user in all_users %}
+                            <strong> "{{user.user}} </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
