@@ -1,0 +1,14 @@
+{% extends 'all-gram/base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+{{block.super}}
+{% for betty in pr %}
+{{betty.first_name}}
+{% if betty.profile_pic %}
+<img style="border-radius:70%; height:170px; width:170px;" src="{{betty.profile_pic.url}}" alt="">
+{% else %}
+{% endif %}
+{% endfor %}
+
+
+{% endblock %}

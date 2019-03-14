@@ -4,30 +4,62 @@
 {% block content %}
 {{block.super}}
 
-<div class="homebody">
-    <div class="container"> 
 
-        <div class="w3-card-6" style="width:56%">
-            <div class="container">
-                {% if all_images %} {% for images in all_images %}
-                <div class="imagepadding">
-                    <div class="panel panel-primary">
-                        <p class="user-dp">
-                        <a href="{{ image.image }}" data-lightbox="gallery">
-                            <img src="{{ image.image.url}}" class="img-responsive" style="width:100%; margin-left:0%; margin-top: 15px;">
-                        </a>
-                        <div class="container">
-                            <div class='likesect'>
-                        
-                                <span class="like-row">
-                                    {% if liked %}
-                            </span>
-                            {% if all_users %} {% for user in all_users %}
-                            <strong> "{{user.user}} </strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+{% for image in all_images %}
+<div class="panel" style="padding:5px;margin-left:-550px">
+    <img src="{{ image.image.url}}" class="img-responsive" style="width:500px; height: 100%;">
+    <p> {{image.image_caption}}</p>
+
+             
 </div>
+{% endfor %}
+</div>
+<hr>
+<div class="col-md-6">
+<p class="text-muted"> Follow other users</p>
+<div class="list">
+    <br>
+    {% for profile in all_users %}
+    {{profile.first_name}}
+    {% for pro in all_users %}
+    {% if user.username == profile.username%}
+    {%else%}
+    <ul class="list-inline">
+        <li class="list-inline-item">
+            <a href="/viewprofile/{{pro.id}}" class="others"><strong class="list-inline">
+                    &nbsp;&nbsp;{{pro.first_name}} </strong>
+            </a>
+            <br>
+
+        </li>
+        
+        {% if profile in people %}
+        <li class="list-inline-item">
+            <a href="/unfollow/{{profile.id}}"><button class="btn btn-success btn-md">Following</button></a>
+        </li>
+        {% else %}
+        <li class="list-inline-item">
+            <a href="/follow/{{profile.id}}"><button class="btn btn-success btn-md">Follow</button></a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+</div>
+</div>
+</div>
+<style>
+.list{
+    overflow: scroll;
+    width: 200px;
+    height: 255px;
+    background: rgb(241,241,241);
+}
+</style>
+{% endblock %}

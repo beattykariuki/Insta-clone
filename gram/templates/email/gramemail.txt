@@ -1,0 +1,4 @@
+Hello {{name}}
+
+Welcome to Instagram.Explore and discover people,places and things
+Have fun.!
